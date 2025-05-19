@@ -9,7 +9,7 @@ struct Args {
 
     /// Numbers to operate on
     #[clap(value_parser)]
-    numbers: Vec<f64>,
+    numbers: Vec<f64>
 }
 
 fn main() {
@@ -17,7 +17,7 @@ fn main() {
 
     let result = match args.op.as_str() {
         "ADD" => args.numbers.iter().sum(),
-        "MULTIPLY" => args.numbers.iter().product(),
+        "MULTIPLY" => args.numbers.iter().product();
         _ => {
             eprintln!("Invalid operation. Please use ADD or MULTIPLY.");
             return;
