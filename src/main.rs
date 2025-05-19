@@ -17,7 +17,7 @@ fn main() {
 
     let result = match args.op.as_str() {
         "ADD" => args.numbers.iter().sum(),
-        "MULTIPLY" => args.numbers.iter().product(),
+        "MULTIPLY" => args.numbers.iter().fold(1.0, |acc, x| acc * x),
         _ => {
             eprintln!("Invalid operation. Please use ADD or MULTIPLY.");
             return;
