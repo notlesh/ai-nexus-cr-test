@@ -27,7 +27,7 @@ jobs:
       run: cat Cargo.lock
       if: false
     - name: Install Rust
-      uses: dtolnay/rust-toolchain@1.77.0
+      uses: dtolnay/rust-toolchain@stable
     - name: Build
       run: cargo build --verbose
     - name: Print Rust version
