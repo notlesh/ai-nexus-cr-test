@@ -27,5 +27,7 @@ jobs:
       uses: dtolnay/rust-toolchain@stable
     - name: Build
       run: cargo build --verbose
+    - name: Print Rust version
+      run: rustc --version
     - name: Run tests
       run: cargo test --verbose
