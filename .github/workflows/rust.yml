@@ -31,3 +31,5 @@ jobs:
       run: rustc --version
     - name: Run tests
       run: cargo test --verbose
+    - name: Print working directory
+      run: pwd
