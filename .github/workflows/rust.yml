@@ -23,6 +23,8 @@ jobs:
           ~/.cargo/git
           target
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    - name: Print Cargo.lock
+      run: cat Cargo.lock
     - name: Install Rust
       uses: dtolnay/rust-toolchain@stable
     - name: Build
