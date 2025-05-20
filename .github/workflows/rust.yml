@@ -25,6 +25,7 @@ jobs:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - name: Print Cargo.lock
       run: cat Cargo.lock
+      if: false
     - name: Install Rust
       uses: dtolnay/rust-toolchain@stable
     - name: Build
