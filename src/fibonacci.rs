@@ -39,7 +39,7 @@ pub mod functions {
 
     #[cfg(test)]
     mod tests {
-        use super::super::fibonacci;
+        use crate::fibonacci::fibonacci;
 
         #[test]
         fn test_fibonacci_zero() {
