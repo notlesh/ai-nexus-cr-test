@@ -1,4 +1,4 @@
-fn fibonacci(n: u32) -> u64 {
+pub fn fibonacci(n: u32) -> u64 {
     match n {
         0 => 0,
         1 => 1,
