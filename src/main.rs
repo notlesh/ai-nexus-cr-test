@@ -1,4 +1,6 @@
 use clap::Parser;
+#[macro_use]
+extern crate lazy_static;
 mod fibonacci;
 use fibonacci::functions::fibonacci;
 
