@@ -27,7 +27,7 @@ pub mod functions {
         let result = match n {
             0 => 0,
             1 => 1,
-            _ => fibonacci(n - 1) + fibonacci(n - 2),
+            _ => functions::fibonacci(n - 1) + functions::fibonacci(n - 2),
         };
 
         cache.insert(n, result);
