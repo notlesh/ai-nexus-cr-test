@@ -14,7 +14,7 @@ lazy_static::lazy_static! {
 }
 
 pub mod functions {
-    use crate::FIB_CACHE;
+    use super::super::FIB_CACHE;
     use std::sync::MutexGuard;
 
     pub fn fibonacci(n: u32) -> u64 {
