@@ -16,8 +16,8 @@ fn main() {
     let args = Args::parse();
 
     let result = match args.op.as_str() {
-        "ADD" => args.numbers.iter().sum(),
-        "MULTIPLY" => args.numbers.iter().product(),
+        "ADD" => args.numbers.iter().copied().sum(),
+        "MULTIPLY" => args.numbers.iter().copied().product(),
         _ => {
             eprintln!("Invalid operation. Please use ADD or MULTIPLY.");
             return;
