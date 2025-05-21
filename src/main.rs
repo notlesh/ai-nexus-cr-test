@@ -1,6 +1,6 @@
 use clap::Parser;
 mod fibonacci;
-use lazy_static::lazy_static;
+
 use fibonacci::functions::fibonacci;
 
 #[derive(Parser, Debug)]
