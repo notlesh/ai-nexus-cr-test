@@ -1,7 +1,7 @@
 use clap::Parser;
 use lazy_static::lazy_static;
+use ai_nexus_cr_test::fibonacci::functions::fibonacci;
 mod fibonacci;
-use fibonacci::functions::fibonacci;
 
 #[derive(Parser, Debug)]
 #[clap(author = "", version, about, long_about = None)]
