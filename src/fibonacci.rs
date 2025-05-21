@@ -15,7 +15,6 @@ lazy_static::lazy_static! {
 
 pub mod functions {
     use super::FIB_CACHE;
-    use super::fibonacci;
     use std::sync::MutexGuard;
 
     pub fn fibonacci(n: u32) -> u64 {
@@ -27,7 +26,11 @@ pub mod functions {
         let result = match n {
             0 => 0,
             1 => 1,
-            _ => super::fibonacci(n - 1) + super::fibonacci(n - 2),
+            _ =>  {
+                let a = super::functions::fibonacci(n - 1);
+                let b = super::functions::fibonacci(n - 2);
+                a + b
+            },
         };
 
         cache.insert(n, result);
