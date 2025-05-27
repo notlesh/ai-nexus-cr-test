@@ -1,0 +1,37 @@
+
+  "kind": "collectionType",
+  "collectionName": "blog_posts",
+  "displayName": "Blog Post",
+  "singularName": "blog-post",
+  "pluralName": "blog-posts",
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "comments": {
+      "type": "relation",
+      "target": "api::comment.comment",
+      "mappedBy": "blog_post"
+    }
+  }
+}

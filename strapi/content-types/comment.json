@@ -1,0 +1,30 @@
+
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "displayName": "Comment",
+  "singularName": "comment",
+  "pluralName": "comments",
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "comment": {
+      "type": "text",
+      "required": true
+    },
+    "blog_post": {
+      "type": "relation",
+      "target": "api::blog-post.blog-post",
+      "inversedBy": "comments"
+    }
+  }
+}
