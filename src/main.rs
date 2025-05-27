@@ -1,40 +1,20 @@
-use clap::Parser;
-mod fibonacci;
+mod stack;
 
-use fibonacci::functions::fibonacci;
-
-#[derive(Parser, Debug)]
-#[clap(author = "", version, about, long_about = None)]
-struct Args {
-    /// Operation to perform: ADD or MULTIPLY
-    #[clap(short, long, value_parser, default_value = "ADD")]
-    op: String,
-
-    /// Numbers to operate on
-    #[clap(value_parser)]
-    numbers: Vec<f64>,
-
-    /// Calculate fibonacci number
-    #[clap(short, long, value_parser)]
-    fib: Option<u32>,
-}
+use stack::Stack;
 
 fn main() {
-    let args = Args::parse();
+    let mut stack = Stack::new();
 
-    if let Some(n) = args.fib {
-        println!("Fibonacci({}): {}", n, fibonacci(n));
-        return;
-    }
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
 
-    let result = match args.op.as_str() {
-        "ADD" => args.numbers.iter().sum::<f64>(),
-        "MULTIPLY" => args.numbers.iter().product::<f64>(),
-        _ => {
-            eprintln!("Invalid operation. Please use ADD or MULTIPLY.");
-            return;
-        }
-    };
+    println!("Stack: {:?}", stack);
 
-    println!("Result: {}", result);
+    println!("Pop: {:?}", stack.pop());
+    println!("Pop: {:?}", stack.pop());
+    println!("Pop: {:?}", stack.pop());
+    println!("Pop: {:?}", stack.pop()); // Should print an error
+
+    println!("Is empty: {}", stack.is_empty());
 }
