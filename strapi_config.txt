@@ -1,0 +1,18 @@
+database:
+  client: postgres
+  connection:
+    host: localhost
+    port: 5432
+    database: travel_blog
+    username: postgres
+    password: password
+
+content_types:
+  blog_post:
+    title: string
+    content: text
+    photo: media
+    comments: relation
+  photo_gallery:
+    title: string
+    photos: media

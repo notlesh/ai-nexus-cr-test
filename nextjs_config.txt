@@ -1,0 +1,18 @@
+module.exports = {
+  reactStrictMode: true,
+  env: {
+    STRAPI_API_URL: 'http://localhost:1337',
+  },
+}
+
+components:
+  BlogPost: {
+    title: string,
+    content: text,
+    photo: image,
+    comments: list
+  },
+  PhotoGallery: {
+    title: string,
+    photos: list of images
+  }
