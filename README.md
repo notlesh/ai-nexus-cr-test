@@ -1,1 +1,3 @@
-# ai-nexus-cr-test
+# Hobby Blog
+
+This is a personal travel blog built with Next.js and Strapi.
