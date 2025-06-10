@@ -1,0 +1,32 @@
+name: E2E Test Coverage
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test_coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Rust toolchain
+        run: rustup toolchain install stable --profile minimal -y
+      - name: Use stable toolchain
+        run: rustup default stable
+      - name: Install cargo-cov
+        run: cargo install cargo-cov
+      - name: Generate coverage report
+        run: cargo cov --all --output-type=lcov --output-path=coverage.lcov
+      - name: Convert lcov to Cobertura
+        run: cargo cov --lcov --output-path coverage.xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          fail_ci_if_error: true
+          files: coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+          path_to_write_report: ./coverage
+          verbose: true
