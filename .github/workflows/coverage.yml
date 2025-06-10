@@ -1,0 +1,39 @@
+name: Coverage
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - name: Install cargo-cov
+        run: cargo install cargo-cov
+      - name: Generate coverage report
+        run: cargo cov --all --output json > coverage.json
+      - name: Upload coverage report as artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage.json
+      - name: Post coverage report to PR
+        if: github.event_name == 'pull_request'
+        run: |
+          COVERAGE=$(cat coverage.json)
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          BODY="Coverage Report: ${COVERAGE}"
+          curl --request POST \
+            --url "https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments" \
+            --header "Authorization: Bearer ${GITHUB_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --data "{\"body\":\"${BODY}\"}"
